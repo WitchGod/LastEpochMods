@@ -101,7 +101,8 @@ namespace LastEpochMods
                         }
                     }
                     //if (UnityEngine.Input.GetKeyDown(UnityEngine.KeyCode.F9)) { Mods.Character.ResetMasterie(); }
-                    //if (UnityEngine.Input.GetKeyDown(UnityEngine.KeyCode.F10)) { Mods.Character.Launch_LevelUp(); }
+                    if (UnityEngine.Input.GetKeyDown(UnityEngine.KeyCode.F10)) { Mods.Character.LevelUp_Once(); }
+                    if (UnityEngine.Input.GetKeyDown(UnityEngine.KeyCode.F11)) { Mods.Character.LevelUp_Max(); }
                 }
             }
         }

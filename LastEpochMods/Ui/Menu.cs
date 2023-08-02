@@ -311,11 +311,11 @@ namespace LastEpochMods.Ui
                     {
                         if (GUI.Button(new Rect(pos_x, pos_y, btn_size_w, btn_size_h), "God Mode", Styles.Button_Style(Config.Data.mods_config.character.characterstats.Enable_GodMode))) { Mods.Character.GodMode(); }
                         pos_y += 45;
-                        if (GUI.Button(new Rect(pos_x, pos_y, btn_size_w, btn_size_h), "Level Up", Styles.Button_Style(false))) { Mods.Character.LevelUp(); }
+                        if (GUI.Button(new Rect(pos_x, pos_y, btn_size_w, btn_size_h), "Level Up", Styles.Button_Style(false))) { Mods.Character.LevelUp_Once(); }
                         pos_y += 45;
                         string btn_str = "Choose Masterie";
                         if (Mods.Character.GetIsMastered()) { btn_str = "Reset Masterie"; }
-                        if (GUI.Button(new Rect(pos_x, pos_y, btn_size_w, btn_size_h), btn_str, Styles.Button_Style(false))) { Mods.Character.ResetMasterie(); }
+                        if (GUI.Button(new Rect(pos_x, pos_y, btn_size_w, btn_size_h), btn_str, Styles.Button_Style(false))) { Mods.Character.ResetMasteries(); }
                         pos_y += 45;
                     }
                     CustomControls.EnableButton("Unlock Cosmetic", pos_x, pos_y, Config.Data.mods_config.character.cosmetic.Enable_Cosmetic_Btn, Ui.Menu.Btn_Cosmetic_Click);

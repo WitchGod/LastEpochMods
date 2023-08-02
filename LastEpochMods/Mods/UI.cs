@@ -22,7 +22,7 @@ namespace LastEpochMods.Mods
             }
         }
 
-        public class MasterieUI
+        public class MasteriesUI
         {
             public static void Show()
             {

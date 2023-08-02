@@ -227,6 +227,7 @@
     <Compile Include="Hooks\Bottom_Screen_Menu.cs" />
     <Compile Include="Hooks\Character_Mutator.cs" />
     <Compile Include="Hooks\Character_Stats.cs" />
+    <Compile Include="Hooks\Common.cs" />
     <Compile Include="Hooks\Cosmetic_Item_Object.cs" />
     <Compile Include="Hooks\Cosmetic_Item_Slot.cs" />
     <Compile Include="Hooks\Cosmetic_Manager.cs" />
