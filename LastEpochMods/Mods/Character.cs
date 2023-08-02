@@ -16,6 +16,7 @@ namespace LastEpochMods.Mods
         private static CharacterDataTracker DataTracker = PlayerFinder.getPlayerDataTracker();
         private static LocalTreeData TreeData = PlayerFinder.getLocalTreeData();
         private static BaseHealth Health = PlayerFinder.getLocalPlayerHealth();
+        private static StatBuffs PlayerBuffs = PlayerFinder.getPlayerActor().statBuffs;
 
         public static void LevelUp_Once(bool displayEffect = true)
         {
@@ -106,7 +107,7 @@ namespace LastEpochMods.Mods
                 MelonLogger.Msg(sb.ToString());
             }
 
-            UnlockPortalInteraction.unlockPortal(PlayerFinder.getPlayerActor().gameObject);
+            UnlockPortalInteraction.unlockPortal(Player.gameObject);
         }
 
         public static void UnlockMonoliths()
@@ -122,6 +123,11 @@ namespace LastEpochMods.Mods
             MonolithSidebarTracker monolithSidebarTracker = new MonolithSidebarTracker();
             foreach (MonolithBridgeInfo monolithBridgeInfo in monolithSidebarTracker.bridges)
                 monolithBridgeInfo.SetBridgeUnlocked(true);
+        }
+
+        public static void AddBuff(Buff customBuff)
+        {
+            Player.statBuffs.addBuff(customBuff);
         }
     }
 }

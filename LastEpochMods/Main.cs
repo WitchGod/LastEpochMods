@@ -2,6 +2,7 @@
 using System.Linq;
 using UnityEngine;
 using UniverseLib;
+using UniverseLib.Utility;
 
 namespace LastEpochMods
 {
@@ -66,41 +67,24 @@ namespace LastEpochMods
                 if (UnityEngine.Input.GetKeyDown(UnityEngine.KeyCode.F1)) { Ui.Menu.isMenuOpen = !Ui.Menu.isMenuOpen; }
                 if (Scenes.GameScene())
                 {                    
-                    if (Input.GetKeyDown(KeyCode.F9)) //Exemple Buff Character
+                    if (UnityEngine.Input.GetKeyDown(KeyCode.F9))
                     {
-                        foreach (UnityEngine.Object obj in UniverseLib.RuntimeHelper.FindObjectsOfTypeAll(typeof(StatBuffs)))
-                        {
-                            if (obj.name == "MainPlayer(Clone)")
-                            {
-                                float duration = 255;
-                                SP propertie = SP.HealthRegen;
-                                float added_value = 0f;
-                                float increase_value = 0.3f;
-                                Il2CppSystem.Collections.Generic.List<float> more_values = null;
-                                AT tag = AT.None;
-                                byte special_tag = 0;
-                                string name = "default sigils of hope mutator HealthRegen";
-                                obj.TryCast<StatBuffs>().addBuff(duration, propertie, added_value, increase_value, more_values, tag, special_tag, name);                                
-                                
-                                /*Buff buff = new Buff
-                                {
-                                    name = "default sigils of hope mutator HealthRegen - None 0FalseTrue",
-                                    remainingDuration = 255,
-                                    stat = new Stats.Stat
-                                    {
-                                        addedValue = 0,
-                                        increasedValue = 0.3f,
-                                        moreValues = null,
-                                        property = SP.HealthRegen,
-                                        specialTag = 0,
-                                        tags = AT.None
-                                    }
-                                };
-                                obj.TryCast<StatBuffs>().buffs.Add(buff);*/
-                            }
-                        }
+                        Main.logger_instance.Msg("Creating buff...");
+                        Buff customBuff = new Buff();
+                        customBuff.remainingDuration = 255;
+                        Stats.Stat tempStat = new Stats.Stat();
+                        tempStat.addedValue = 1.0f;
+                        tempStat.increasedValue = 0.3f;
+                        tempStat.moreValues = null;
+                        tempStat.property = SP.Intelligence;
+                        tempStat.specialTag = 0;
+                        tempStat.tags = AT.None;
+                        customBuff.stat = tempStat;
+                        customBuff.name = "testing this buff";
+                        Main.logger_instance.Msg("Attempting to buff character...");
+                        Mods.Character.AddBuff(customBuff); // Why you so buggy.
+                        Main.logger_instance.Msg("Buffing successful.");
                     }
-                    //if (UnityEngine.Input.GetKeyDown(UnityEngine.KeyCode.F9)) { Mods.Character.ResetMasterie(); }
                     if (UnityEngine.Input.GetKeyDown(UnityEngine.KeyCode.F10)) { Mods.Character.LevelUp_Once(); }
                     if (UnityEngine.Input.GetKeyDown(UnityEngine.KeyCode.F11)) { Mods.Character.LevelUp_Max(); }
                 }
